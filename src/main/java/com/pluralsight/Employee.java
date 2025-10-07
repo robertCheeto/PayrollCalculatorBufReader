@@ -13,6 +13,16 @@ public class Employee {
         this.employeeName = employeeName;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeID=" + employeeID +
+                ", employeeName='" + employeeName + '\'' +
+                ", hoursWorked=" + hoursWorked +
+                ", payRate=" + payRate +
+                '}';
+    }
+
     public double getPayRate() {
         return payRate;
     }
