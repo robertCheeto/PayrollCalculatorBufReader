@@ -8,16 +8,19 @@ public class Main {
     public static void main(String[] args) {
         // try to read text from a file first before created the payroll calc
         try {
-            FileReader fileReader = new FileReader("src/main/resources/goldilocks.txt");
+            FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
-            String text;
-            while ((text = bufReader.readLine()) != null) {
-                System.out.println(text);
+            String employeeList;
+            while ((employeeList = bufReader.readLine()) != null) {
+                Employee employee = { new Employee(employeeList.split("\\|")) };
             }
             bufReader.close();
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
+
     }
 }
