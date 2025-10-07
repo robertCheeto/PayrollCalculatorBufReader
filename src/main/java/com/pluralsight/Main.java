@@ -9,7 +9,7 @@ public class Main {
         int count = 0;
 
         try {
-            FileReader fileReader = new FileReader("src/main/resources/employees.csv");
+            FileReader fileReader = new FileReader("src/main/resources/" + userInput);
             BufferedReader bufReader = new BufferedReader(fileReader);
             FileWriter fileWriter = new FileWriter("src/main/resources/employeeExport.csv");
             BufferedWriter bufWriter = new BufferedWriter(fileWriter);
@@ -25,21 +25,20 @@ public class Main {
                     double payRate = Double.parseDouble(parsedList[3]);
 
                     employeeList[count] = new Employee(id, name, hoursWorked, payRate);
-                    System.out.printf("Employee ID: %d | Employee Name: %s | Gross Pay: $%.2f\n", employeeList[count].getEmployeeID(), employeeList[count].getEmployeeName(), employeeList[count].getGrossSalary());
-
+                    //System.out.printf("Employee ID: %d | Employee Name: %s | Gross Pay: $%.2f\n", employeeList[count].getEmployeeID(), employeeList[count].getEmployeeName(), employeeList[count].getGrossSalary());
+                    // don't need to display the output
                     bufWriter.write(employeeList[count].getEmployeeID() + "|" + employeeList[count].getEmployeeName() + "|" + employeeList[count].getGrossSalary() + "\n");
-
                     count++;
                 } // end of if statement
+
             } // end of while loop
             bufReader.close();
             bufWriter.close();
-
         } catch (
                 IOException e) {
             e.printStackTrace();
         } // and of try and catch
 
-
     } // end of main()
+
 }
