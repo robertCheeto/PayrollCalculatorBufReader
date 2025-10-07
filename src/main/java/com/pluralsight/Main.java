@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
+        String userInput "";
 
         System.out.println("Please enter the number corresponding with the file you want to process...");
         System.out.print("1) employees.csv OR 2) employeesExport.csv: ");
@@ -16,7 +17,7 @@ public class Main {
             case(1):
                 processEmployeeCSV();
                 System.out.print("Would you like to rename the output of the file? (Y/N)");
-                String userInput = keyboard.nextLine().toLowerCase().trim();
+                userInput = keyboard.nextLine().toLowerCase().trim();
                 switch (userInput) {
                     case("y"):
                         System.out.print("Please enter the name of the file: ");
@@ -42,7 +43,7 @@ public class Main {
         try {
             FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
-            FileWriter fileWriter = new FileWriter("src/main/resources/employeesExport.csv");
+            FileWriter fileWriter = new FileWriter(userInput);
             BufferedWriter bufWriter = new BufferedWriter(fileWriter);
             String input;
             bufWriter.write("id|name|gross pay\n");
