@@ -16,8 +16,8 @@ public class Main {
                 employeeList.split("\\|");
                 // maybe need a loop that says while bufReader is not null,
                 // take the variable, convert it, and then place it in the array
-                Employee[] employee = { new Employee(employeeList, employeeList, employeeList, employeeList)};
-
+                Employee[] employee = { new Employee(Integer.parseInt(employeeList), employeeList, Integer.parseInt(employeeList), Integer.parseInt(employeeList))};
+                System.out.println(employee[0]);
 
 
             } // end of while loop
