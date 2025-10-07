@@ -22,8 +22,7 @@ public class Main {
                 double  payRate = Double.parseDouble(parsedList[3]);
 
                 Employee employeeList = new Employee(id, name, hoursWorked, payRate);
-                System.out.println(employeeList);
-
+                System.out.printf("Employee ID: %d | Employee Name: %s | Gross Pay: $%.2f\n", employeeList.getEmployeeID(), employeeList.getEmployeeName(), employeeList.getGrossSalary());
 
 
             } // end of while loop
