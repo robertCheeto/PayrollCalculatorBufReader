@@ -1,49 +1,17 @@
 package com.pluralsight;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner keyboard = new Scanner(System.in);
-        String userInput "";
 
-        System.out.println("Please enter the number corresponding with the file you want to process...");
-        System.out.print("1) employees.csv OR 2) employeesExport.csv: ");
-        int userChoice = keyboard.nextInt();
-        keyboard.nextLine();
-
-        switch (userChoice) {
-            case(1):
-                processEmployeeCSV();
-                System.out.print("Would you like to rename the output of the file? (Y/N)");
-                userInput = keyboard.nextLine().toLowerCase().trim();
-                switch (userInput) {
-                    case("y"):
-                        System.out.print("Please enter the name of the file: ");
-                        userInput = keyboard.nextLine();
-                    case("n"):
-                        break;
-                }
-                break;
-            case(2):
-                processEmployeeCSV();
-                System.out.println("hehe");
-                break;
-            default:
-                System.out.println("Please enter a proper file name");
-        } // end of switch statement
-
-        } // end of main()
-
-    public static void processEmployeeCSV() {
         Employee[] employeeList = new Employee[10];
         int count = 0;
 
         try {
             FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
-            FileWriter fileWriter = new FileWriter(userInput);
+            FileWriter fileWriter = new FileWriter("src/main/resources/employeeExport.csv");
             BufferedWriter bufWriter = new BufferedWriter(fileWriter);
             String input;
             bufWriter.write("id|name|gross pay\n");
@@ -67,10 +35,11 @@ public class Main {
             bufReader.close();
             bufWriter.close();
 
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             e.printStackTrace();
         } // and of try and catch
-    } // end of processCSV
 
-    }
 
+    } // end of main()
+}
