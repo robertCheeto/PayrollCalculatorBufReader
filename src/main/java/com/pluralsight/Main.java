@@ -6,21 +6,30 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        // try to read text from a file first before created the payroll calc
+
         try {
             FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
             String employeeList;
+
             while ((employeeList = bufReader.readLine()) != null) {
-                Employee employee = { new Employee(employeeList.split("\\|")) };
-            }
+                employeeList.split("\\|");
+                // maybe need a loop that says while bufReader is not null,
+                // take the variable, convert it, and then place it in the array
+                Employee[] employee = { new Employee(employeeList, employeeList, employeeList, employeeList)};
+
+
+
+            } // end of while loop
             bufReader.close();
-        } catch (Exception e) {
+
+        } catch (IOException e) {
             e.printStackTrace();
-        }
+        } // and of try and catch
 
 
+    } // end of main()
 
+    // potentially create a method to correctly parse data from the csv into variable types
 
-    }
 }
