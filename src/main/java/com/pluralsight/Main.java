@@ -1,11 +1,12 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
+
+        Employee[] employeeList = new Employee[10];
+        int count = 0;
 
         try {
             FileReader fileReader = new FileReader("src/main/resources/employees.csv");
@@ -21,10 +22,9 @@ public class Main {
                 double  hoursWorked = Double.parseDouble(parsedList[2]);
                 double  payRate = Double.parseDouble(parsedList[3]);
 
-                Employee employeeList = new Employee(id, name, hoursWorked, payRate);
-                System.out.printf("Employee ID: %d | Employee Name: %s | Gross Pay: $%.2f\n", employeeList.getEmployeeID(), employeeList.getEmployeeName(), employeeList.getGrossSalary());
-
-
+                employeeList[count] = new Employee(id, name, hoursWorked, payRate);
+                System.out.printf("Employee ID: %d | Employee Name: %s | Gross Pay: $%.2f\n", employeeList[count].getEmployeeID(), employeeList[count].getEmployeeName(), employeeList[count].getGrossSalary());
+                count++;
             } // end of while loop
             bufReader.close();
 
@@ -32,6 +32,17 @@ public class Main {
             e.printStackTrace();
         } // and of try and catch
 
+        try {
+            FileWriter fileWriter = new FileWriter("src/main/resources/employeesExport.csv");
+            BufferedWriter bufWriter = new BufferedWriter(fileWriter);
+
+
+            } // end of while loop
+            bufWriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } // and of try and catch
 
     } // end of main()
 
