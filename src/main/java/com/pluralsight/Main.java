@@ -10,14 +10,20 @@ public class Main {
         try {
             FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
-            String employeeList;
+            String input;
+            bufReader.readLine();
 
-            while ((employeeList = bufReader.readLine()) != null) {
-                employeeList.split("\\|");
-                // maybe need a loop that says while bufReader is not null,
-                // take the variable, convert it, and then place it in the array
-                Employee[] employee = { new Employee(Integer.parseInt(employeeList), employeeList, Integer.parseInt(employeeList), Integer.parseInt(employeeList))};
-                System.out.println(employee[0]);
+            while ((input = bufReader.readLine()) != null) {
+                String[] parsedList = input.split("\\|");
+
+                int id = Integer.parseInt(parsedList[0]);
+                String name = parsedList[1];
+                double  hoursWorked = Double.parseDouble(parsedList[2]);
+                double  payRate = Double.parseDouble(parsedList[3]);
+
+                Employee employeeList = new Employee(id, name, hoursWorked, payRate);
+                System.out.println(employeeList);
+
 
 
             } // end of while loop
