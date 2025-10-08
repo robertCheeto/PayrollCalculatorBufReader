@@ -1,17 +1,27 @@
 package com.pluralsight;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        Scanner keyboard = new Scanner(System.in);
+        String userInput = "";
         Employee[] employeeList = new Employee[10];
         int count = 0;
+
+        System.out.print("Please enter a file name you want to access: ");
+        userInput = keyboard.nextLine();
 
         try {
             FileReader fileReader = new FileReader("src/main/resources/" + userInput);
             BufferedReader bufReader = new BufferedReader(fileReader);
-            FileWriter fileWriter = new FileWriter("src/main/resources/employeeExport.csv");
+
+            System.out.print("Please enter a name for the exported version of this file: ");
+            userInput = keyboard.nextLine();
+
+            FileWriter fileWriter = new FileWriter("src/main/resources/" + userInput);
             BufferedWriter bufWriter = new BufferedWriter(fileWriter);
             String input;
             bufWriter.write("id|name|gross pay\n");
